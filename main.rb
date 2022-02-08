@@ -8,20 +8,12 @@ response = Net::HTTP.get_response(URI.parse(URL))
 doc = REXML::Document.new(response.body)
 
 # Достаем все XML-теги <Valute> внутри тега <ValCurs> и преобразуем их в массив
-valute_nodes = doc.elements['ValCurs'].elements.to_a
+all_nodes = doc.elements['ValCurs'].to_a
+valute_nodes = all_nodes[10,2]
 
 
-valute_name = doc.elements['//Valute/Name']
+puts "Текущие курсы валют \n \n"
 
 valute_nodes.each do |node|
-	puts Parser.from_xml(node)
-	puts
+  puts Parser.from_xml(node)
 end
-
-
-
-
-#forecast_nodes.each do |node|
-  #puts MeteoserviceForecast.from_xml(node)
- # puts
-#end
