@@ -1,8 +1,6 @@
 require 'rexml/document'
 require 'date'
 
-
-
 class Parser
 
   attr_accessor :id, :num_code, :name, :value
@@ -20,19 +18,13 @@ class Parser
     new(
       id: node.attributes['ID'].to_i,
       num_code: node.elements['NumCode'].get_text.value.to_i,
-      #num_code: CODEZ[node.elements['NumCode'].get_text.value.to_i],
       name: node.elements['Name'].get_text.value.to_s,
       value: node.elements['Value'].get_text.value.to_s
     )
   end
 
-
-
-
-
-
   def to_s
-      result = "#{@name}:  #{@value} руб." 
+    result = "#{@name}:  #{@value} руб."
 
     return result
   end

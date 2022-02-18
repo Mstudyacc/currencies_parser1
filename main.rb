@@ -11,7 +11,6 @@ doc = REXML::Document.new(response.body)
 all_nodes = doc.elements['ValCurs'].to_a
 valute_nodes = all_nodes[10,2]
 
-
 puts "Текущие курсы валют \n \n"
 
 valute_nodes.each do |node|
